@@ -1,34 +1,44 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import React from "react";
+import { Tabs } from "expo-router";
+import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: 'white', 
+        tabBarInactiveTintColor: 'white',
         headerShown: false,
-      }}>
+        tabBarStyle: { backgroundColor: "#0F0F0F", borderTopColor: "black", paddingTop: 12 }, 
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          tabBarLabel: '',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <Ionicons name={focused ? "home" : "home-outline"} size={24} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
+          tabBarLabel: '',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <AntDesign name={focused ? "heart" : "hearto"} size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name={focused ? "user-circle" : "user-circle-o"} size={24} color={color} />
           ),
         }}
       />
